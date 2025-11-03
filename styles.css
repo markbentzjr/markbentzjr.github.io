@@ -173,13 +173,7 @@ li {
     position: relative; 
     color: var(--text-dark);
 }
-li::before { 
-    content: '⚡'; 
-    color: var(--accent); 
-    position: absolute; 
-    left: 0; 
-    font-size: 1.2rem;
-}
+li::before { content: none; }
 a { 
     color: var(--accent); 
     text-decoration: none; 
