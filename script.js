@@ -1,4 +1,11 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+// Register service worker for PWA
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => console.log('SW registered'))
+            .catch(error => console.log('SW registration failed'));
+    });
+}
 
 const supabaseUrl = 'https://hbtgrmjjkgkaiovjaivp.supabase.co'
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhidGdybWpqa2drYWlvdmphaXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIxNDExOTgsImV4cCI6MjA3NzcxNzE5OH0.NFD50GZ9R2KiVOcktaQbqDTyYM2-6WtxyHozxMXANLI'  // Supabase anon key

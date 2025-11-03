@@ -11,6 +11,7 @@
     <meta property="og:url" content="https://markbentzjr.github.io">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
@@ -29,41 +30,96 @@
         },
         "sameAs": [
             "https://www.linkedin.com/in/mark-bentz-990218169"
+        ],
+        "hasOccupation": [
+            {
+                "@type": "Occupation",
+                "name": "Project Engineer",
+                "occupationLocation": {
+                    "@type": "City",
+                    "name": "Trussville",
+                    "addressRegion": "AL",
+                    "addressCountry": "US"
+                }
+            },
+            {
+                "@type": "Occupation",
+                "name": "Senior Process Engineer",
+                "occupationLocation": {
+                    "@type": "City",
+                    "name": "McCalla",
+                    "addressRegion": "AL",
+                    "addressCountry": "US"
+                }
+            }
+        ],
+        "knowsAbout": [
+            "PLC Programming",
+            "SCADA Systems",
+            "OT Cybersecurity",
+            "ISA/IEC 62443",
+            "Mechanical Engineering",
+            "Automation"
+        ],
+        "hasCredential": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "name": "ISA/IEC 62443 Cybersecurity Fundamentals Specialist",
+                "credentialCategory": "certificate"
+            },
+            {
+                "@type": "EducationalOccupationalCredential",
+                "name": "ISA/IEC 62443 Cybersecurity Risk Assessment Specialist",
+                "credentialCategory": "certificate"
+            },
+            {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Rockwell CCP153 (Advanced)",
+                "credentialCategory": "certificate"
+            }
         ]
     }
     </script>
 </head>
 <body class="dark">
-    <nav id="navbar">
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
         <button id="hamburger">☰</button>
         <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#resume">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><button id="theme-toggle">Theme</button></li>
+            <li><a href="#experience" aria-describedby="experience-desc">Experience</a></li>
+            <li><a href="#education" aria-describedby="education-desc">Education</a></li>
+            <li><a href="#certifications" aria-describedby="certifications-desc">Certifications</a></li>
+            <li><a href="#skills" aria-describedby="skills-desc">Skills</a></li>
+            <li><a href="#projects" aria-describedby="projects-desc">Projects</a></li>
+            <li><a href="#resume" aria-describedby="resume-desc">Resume</a></li>
+            <li><a href="#contact" aria-describedby="contact-desc">Contact</a></li>
+            <li><button id="theme-toggle" aria-label="Toggle between light and dark theme">Theme</button></li>
         </ul>
     </nav>
     <header>
         <h1>Mark James Bentz</h1>
         <p>Project Engineer | Electric Machine Control | Auburn University Alum (BME '20) | Dual ISA 62443 Certified</p>
+        <div id="experience-desc" class="visually-hidden">Professional experience in engineering roles</div>
+        <div id="education-desc" class="visually-hidden">Educational background and achievements</div>
+        <div id="certifications-desc" class="visually-hidden">Professional certifications in cybersecurity</div>
+        <div id="skills-desc" class="visually-hidden">Technical skills and competencies</div>
+        <div id="projects-desc" class="visually-hidden">Notable projects and achievements</div>
+        <div id="resume-desc" class="visually-hidden">Downloadable resume document</div>
+        <div id="contact-desc" class="visually-hidden">Contact form for inquiries</div>
     </header>
     
     <main id="main" role="main">
         <section id="about">
             <h2>About Me</h2>
             <div class="about-flex">
-                <img src="assets/Profile.jpeg" alt="Mark James Bentz Profile" class="profile-pic" loading="lazy">
+                <img src="assets/Profile.jpeg" alt="Professional headshot of Mark James Bentz, a mechanical engineer with short brown hair and a professional demeanor" class="profile-pic" loading="lazy">
                 <p>With extensive experience in PLC programming, control panel design, and OT cybersecurity, I excel in integrating complex systems for power, water, and manufacturing. Passionate about automation and innovative engineering, from Hyundai Mobis assembly lines to EMC SCADA projects. Let's collaborate.</p>
             </div>
         </section>
         
-        <section id="experience">
-            <h2>Experience</h2>
+        <section id="experience" aria-labelledby="experience-heading">
+            <h2 id="experience-heading">Experience</h2>
             <div class="experience-grid">
                 <div class="card">
                     <h3>Project Engineer</h3>
@@ -110,8 +166,8 @@
             </div>
         </section>
         
-        <section id="education">
-            <h2>Education</h2>
+        <section id="education" aria-labelledby="education-heading">
+            <h2 id="education-heading">Education</h2>
             <div class="card education-card">
                 <span class="visually-hidden">Auburn University Samuel Ginn College of Engineering</span>
                 <div class="education-content">
@@ -122,8 +178,8 @@
             </div>
         </section>
         
-        <section id="certifications">
-            <h2>Certifications</h2>
+        <section id="certifications" aria-labelledby="certifications-heading">
+            <h2 id="certifications-heading">Certifications</h2>
             <div class="cert-grid">
                 <div class="card cert-card">
                     <h3>ISA/IEC 62443 Cybersecurity Fundamentals Specialist</h3>
@@ -145,8 +201,8 @@
             </div>
         </section>
         
-        <section id="skills">
-            <h2>Skills</h2>
+        <section id="skills" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Skills</h2>
             <p><em>Passed LinkedIn Assessments: Python (Advanced), Mechanical Engineering Fundamentals, Data Analysis—among others.</em></p>
             <div class="skills-category">
                 <h3>Programming Languages</h3>
@@ -191,8 +247,8 @@
             </div>
         </section>
         
-        <section id="projects">
-            <h2>Projects</h2>
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Projects</h2>
             <div class="projects-grid">
                 <div class="card projects-card">
                     <h3>AEGIS Deep Space Satellite</h3>
@@ -209,8 +265,8 @@
             </div>
         </section>
         
-        <section id="resume">
-            <h2>Resume</h2>
+        <section id="resume" aria-labelledby="resume-heading">
+            <h2 id="resume-heading">Resume</h2>
             <div class="card resume-card">
                 <embed src="assets/PDFResume.pdf" type="application/pdf" class="resume-pdf">
                 <p>Full resume highlighting experience at Hyundai Mobis, NCR, and Auburn projects. (If embed fails, <a href="assets/PDFResume.pdf" target="_blank">view in new tab</a>.)</p>
@@ -218,8 +274,8 @@
             </div>
         </section>
         
-        <section id="contact">
-            <h2>Contact</h2>
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact</h2>
             <p>Ready to collaborate? Send me a message.</p>
             <form action="https://formspree.io/f/mjkpdgkq" method="POST" class="contact-form">
                 <label for="name">Name:</label>

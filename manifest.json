@@ -1,0 +1,16 @@
+{
+    "name": "Mark James Bentz - Mechanical Engineer Portfolio",
+    "short_name": "Mark Bentz Portfolio",
+    "description": "Portfolio of Mark James Bentz, a mechanical engineer specializing in automation and OT cybersecurity.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1e3a8a",
+    "theme_color": "#F26522",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
