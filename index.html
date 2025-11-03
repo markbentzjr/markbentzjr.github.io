@@ -40,22 +40,6 @@
         <p>Project Engineer | Electric Machine Control | Auburn University Alum (BME '20) | Dual ISA 62443 Certified</p>
     </header>
     
-    <nav id="navbar" aria-label="Main navigation">
-        <button id="hamburger" aria-label="Toggle navigation menu">☰</button>
-        <ul>
-            <li><a href="#about"><span class="nav-icon">👤</span> About</a></li>
-            <li><a href="#experience"><span class="nav-icon">💼</span> Experience</a></li>
-            <li><a href="#education"><span class="nav-icon">🎓</span> Education</a></li>
-            <li><a href="#certifications"><span class="nav-icon">🏆</span> Certifications</a></li>
-            <li><a href="#skills"><span class="nav-icon">🛠️</span> Skills</a></li>
-            <li><a href="#projects"><span class="nav-icon">📁</span> Projects</a></li>
-            <li><a href="#resume"><span class="nav-icon">📄</span> Resume</a></li>
-            <li><a href="#contact"><span class="nav-icon">📧</span> Contact</a></li>
-            <li><a href="game.html"><span class="nav-icon">🎮</span> Physics Game</a></li>
-            <li><button id="theme-toggle" aria-label="Toggle dark mode"><span class="nav-icon">🌙</span> Dark Mode</button></li>
-        </ul>
-    </nav>
-    
     <main id="main" role="main">
         <section id="about">
             <h2>About Me</h2>
@@ -115,11 +99,13 @@
         
         <section id="education">
             <h2>Education</h2>
-            <div class="card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Auburn_University_Logo.svg/512px-Auburn_University_Logo.svg.png" alt="Auburn University Logo" class="auburn-logo" loading="lazy">
-                <h3>Bachelor of Science in Mechanical Engineering</h3>
-                <p><strong>Auburn University, Auburn, AL</strong> | Dec 2020</p>
-                <p>Focused on thermodynamics, materials science, automation, and hands-on projects. Dean’s List (Spring 2017, Summer 2020); Scholarships: Achievement, Board of Trustees, H.K. Porter.</p>
+            <div class="card education-card">
+                <span class="visually-hidden">Auburn University Samuel Ginn College of Engineering</span>
+                <div class="education-content">
+                    <h3>Bachelor of Science in Mechanical Engineering</h3>
+                    <p><strong>Auburn University, Auburn, AL</strong> | Dec 2020</p>
+                    <p>Focused on thermodynamics, materials science, automation, and hands-on projects. Dean’s List (Spring 2017, Summer 2020); Scholarships: Achievement, Board of Trustees, H.K. Porter.</p>
+                </div>
             </div>
         </section>
         
@@ -137,6 +123,7 @@
                     <p><strong>International Society of Automation (ISA)</strong> | Issued Oct 2024 | Expires Oct 2027</p>
                     <p>Advanced expertise in conducting cybersecurity risk assessments for IACS, including asset identification, threat modeling, and mitigation strategies.</p>
                     <a href="https://www.linkedin.com/posts/mark-bentz-990218169_i-am-excited-to-share-my-new-certification-activity-7360025497935773696-XXXv?utm_source=share&utm_medium=member_desktop&rcm=ACoAACgTtHwBbFDGPAJP1VOrusR1V7NX_NYY7pc" target="_blank">View Announcement on LinkedIn</a>
+                </div>
                 <div class="card cert-card">
                     <h3>Rockwell CCP153 (Advanced)</h3>
                     <p><strong>Rockwell Automation</strong> | Certificate Alabama RTP</p>
@@ -205,19 +192,6 @@
                      <p><strong>Data Processing & Analysis Tool</strong> | Personal Project</p>
                      <p>Developed a Python script using Pandas and Matplotlib to automate data cleaning, analysis, and visualization for engineering datasets. Automates CSV data import and preprocessing (handling missing values, outliers). Generates statistical summaries and interactive plots. Includes error handling and logging for robust execution.</p>
                      <p>Example code: <code>import pandas as pd; df = pd.read_csv('data.csv'); df.dropna(); df.describe()</code></p>
-                </div>
-                <div class="card projects-card">
-                    <h3>Interactive Physics Demo: Projectile Motion</h3>
-                    <p><strong>Engineering Physics Simulation</strong> | Web-Based Demo</p>
-                    <p>Explore projectile motion principles by adjusting launch parameters. This interactive demo calculates and animates trajectories based on physics equations, demonstrating concepts from mechanics and kinematics.</p>
-                    <div class="physics-demo">
-                        <label for="angle">Launch Angle (°):</label>
-                        <input type="number" id="angle" min="0" max="90" value="45" step="1">
-                        <label for="velocity">Initial Velocity (m/s):</label>
-                        <input type="number" id="velocity" min="0" max="100" value="20" step="1">
-                        <button id="launch-btn">Launch Projectile</button>
-                        <canvas id="physics-canvas" width="400" height="300" aria-label="Projectile motion animation canvas"></canvas>
-                    </div>
                 </div>
             </div>
         </section>

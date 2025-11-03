@@ -67,8 +67,6 @@ section {
     border-radius: var(--border-radius); 
     box-shadow: var(--shadow); 
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    opacity: 0;
-    transform: translateY(20px);
 }
 section.animate-in { 
     animation: fadeInUp 0.8s ease-out forwards;
@@ -121,6 +119,36 @@ h2::after {
 .card p { 
     margin-bottom: 0.75rem; 
     color: var(--text-light); 
+}
+.education-card {
+    position: relative;
+    padding: clamp(3rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem) clamp(2.5rem, 5vw, 3.5rem);
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%);
+}
+.education-card::before {
+    content: '';
+    position: absolute;
+    top: clamp(1.5rem, 4vw, 2.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(220px, 45vw, 360px);
+    height: clamp(100px, 22vw, 180px);
+    background: url('assets/engineering/formal_wide/white_orange/ceng_formal_w_white_orange.svg') center/contain no-repeat;
+    opacity: 0.95;
+    pointer-events: none;
+}
+.education-card .education-content {
+    position: relative;
+    margin-top: clamp(6rem, 18vw, 10rem);
+    background: rgba(15, 23, 42, 0.65);
+    padding: clamp(1.75rem, 4vw, 3rem);
+    border-radius: 16px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.education-card h3 {
+    color: var(--accent);
 }
 .cert-card { 
     background: linear-gradient(145deg, var(--bg-light) 0%, #e2e8f0 100%); 
@@ -183,6 +211,17 @@ li {
     color: var(--text-dark);
 }
 li::before { content: none; }
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
 a { 
     color: var(--accent); 
     text-decoration: none; 
@@ -201,11 +240,12 @@ img {
     display: block;
 }
 img.auburn-logo { 
-    width: clamp(60px, 10vw, 80px); 
+    width: clamp(160px, 22vw, 240px); 
     height: auto; 
-    margin: 1rem auto; 
-    border-radius: 8px; 
+    margin: 1.5rem auto;
+    border-radius: 12px; 
     box-shadow: var(--shadow);
+    display: block;
 }
 img.profile-pic { 
     width: clamp(120px, 20vw, 150px); 
@@ -383,10 +423,6 @@ nav a.active {
     color: white;
     box-shadow: 0 0 10px rgba(242,101,34,0.5);
 }
-/* Adjust header padding since nav is fixed */
-header {
-    padding-top: clamp(6rem, 15vw, 8rem);
-}
 
 /* Dark Mode */
 .dark {
@@ -479,59 +515,7 @@ header {
     margin-top: 0.25rem;
     display: block;
 }
-.physics-demo {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-}
-.physics-demo label {
-    font-weight: 600;
-    color: var(--primary);
-    display: block;
-    margin-bottom: 0.25rem;
-}
-.physics-demo input {
-    padding: 0.5rem;
-    border: 1px solid var(--text-light);
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: 1rem;
-    width: 100%;
-    max-width: 200px;
-}
-.physics-demo button {
-    padding: 0.5rem 1rem;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s ease;
-}
-.physics-demo button:hover {
-    background: var(--primary);
-}
-.physics-demo canvas {
-    border: 1px solid var(--text-light);
-    border-radius: 8px;
-    background: var(--bg-card);
-    max-width: 100%;
-    height: auto;
-}
 @media (max-width: 600px) {
-    .physics-demo {
-        gap: 0.5rem;
-    }
-    .physics-demo input {
-        max-width: 150px;
-    }
-    .physics-demo canvas {
-        width: 100%;
-        height: 250px;
-    }
     .resume-card {
         padding: 1rem;
         gap: 1rem;
@@ -548,11 +532,6 @@ header {
 }
 
 .contact-form button:hover {
-    background: var(--primary);
-    animation: pulse 0.6s ease-in-out;
-}
-
-.physics-demo button:hover {
     background: var(--primary);
     animation: pulse 0.6s ease-in-out;
 }
