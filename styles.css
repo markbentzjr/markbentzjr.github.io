@@ -286,15 +286,31 @@ footer {
     li { margin-bottom: 0.75rem; }
     .card ul li { padding-left: 0; margin-bottom: 0.5rem; list-style: disc inside; }
     .projects-card ul { padding-left: 1rem; }
+    #hamburger {
+        display: block;
+    }
     nav ul {
-        overflow-x: auto;
-        white-space: nowrap;
-        padding-bottom: 0.5rem;
-        -webkit-overflow-scrolling: touch;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(30, 58, 138, 0.95);
+        backdrop-filter: blur(10px);
+        display: none;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    nav.nav-open ul {
+        display: flex;
     }
     nav li {
-        display: inline-block;
-        margin: 0 0.75rem;
+        margin: 0;
+        text-align: center;
+    }
+    nav a, #theme-toggle {
+        padding: 1rem;
+        display: block;
+        width: 100%;
     }
 }
 nav {
@@ -307,6 +323,17 @@ nav {
     z-index: 1000;
     padding: 0.5rem 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+#hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 1rem;
 }
 nav ul {
     display: flex;
@@ -327,6 +354,10 @@ nav a {
     transition: all 0.3s ease;
     position: relative;
 }
+.nav-icon {
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
 nav a::after {
     content: '';
     position: absolute;
@@ -344,7 +375,7 @@ nav a:hover::after {
 nav a.active::after {
     width: 100%;
 }
-nav a:hover {
+nav a:hover, nav a:focus {
     background: var(--accent);
     color: white;
 }
@@ -529,4 +560,31 @@ header {
 #theme-toggle:hover {
     background: var(--accent);
     animation: pulse 0.6s ease-in-out;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+#back-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+#back-to-top:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
 }

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Game for Recruiters - Mark Bentz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    <style>
+        canvas { border: 1px solid #ccc; display: block; margin: 20px auto; }
+        #score { text-align: center; font-size: 1.2em; }
+    </style>
+</head>
+<body class="dark">
+    <header>
+        <h1>Physics Game for Recruiters</h1>
+        <p>Launch the ball to hit targets and score points!</p>
+    </header>
+    <main>
+        <div id="score">Score: 0 | High Score: 0</div>
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <p>Click and drag to aim, release to launch. Hit the red targets for points.</p>
+    </main>
+    <script>
+        async function main() {
+            let pyodide = await loadPyodide({
+                indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/"
+            });
+            await pyodide.loadPackage('pygame');
+            await pyodide.runPython(`
+import pygame
+import sys
+from js import document, localStorage
+
+pygame.init()
+print("Pygame initialized")
+
+# Set up display
+surf = pygame.display.set_mode((800, 600), 0, 32)
+print("Display set")
+
+# Colors
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+GREEN = (0, 255, 0)
+
+# Ball properties
+ball_pos = [100, 500]
+ball_vel = [0, 0]
+ball_radius = 20
+gravity = 0.5
+
+# Targets
+targets = [[600, 400, 50, 50], [500, 300, 50, 50], [700, 200, 50, 50]]
+
+# Score
+score = 0
+high_score = int(localStorage.getItem('highscore') or 0)
+
+# Font
+font = pygame.font.Font(None, 36)
+
+# Clock
+clock = pygame.time.Clock()
+
+# Game loop
+running = True
+aiming = False
+start_pos = None
+
+def draw():
+    surf.fill(WHITE)
+    pygame.draw.circle(surf, BLUE, (int(ball_pos[0]), int(ball_pos[1])), ball_radius)
+    for t in targets:
+        pygame.draw.rect(surf, RED, t)
+    if aiming:
+        end_pos = pygame.mouse.get_pos()
+        pygame.draw.line(surf, GREEN, start_pos, end_pos, 3)
+    score_text = font.render(f'Score: {score} High: {high_score}', True, (0,0,0))
+    surf.blit(score_text, (10, 10))
+    pygame.display.flip()
+
+print("Starting game loop")
+
+while running:
+    clock.tick(60)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if not aiming:
+                start_pos = pygame.mouse.get_pos()
+                aiming = True
+        elif event.type == pygame.MOUSEBUTTONUP:
+            if aiming:
+                end_pos = pygame.mouse.get_pos()
+                dx = start_pos[0] - end_pos[0]
+                dy = start_pos[1] - end_pos[1]
+                ball_vel = [dx * 0.1, dy * 0.1]
+                aiming = False
+
+    # Update ball
+    ball_pos[0] += ball_vel[0]
+    ball_pos[1] += ball_vel[1]
+    ball_vel[1] += gravity
+
+    # Bounce off walls
+    if ball_pos[0] - ball_radius < 0 or ball_pos[0] + ball_radius > 800:
+        ball_vel[0] *= -0.8
+        ball_pos[0] = max(ball_radius, min(800 - ball_radius, ball_pos[0]))
+
+    # Bounce off ground
+    if ball_pos[1] + ball_radius > 600:
+        ball_pos[1] = 600 - ball_radius
+        ball_vel[1] *= -0.8
+        if abs(ball_vel[1]) < 1:
+            ball_vel[1] = 0
+
+    # Check collisions with targets
+    ball_rect = pygame.Rect(ball_pos[0] - ball_radius, ball_pos[1] - ball_radius, ball_radius*2, ball_radius*2)
+    for i, t in enumerate(targets):
+        t_rect = pygame.Rect(t[0], t[1], t[2], t[3])
+        if ball_rect.colliderect(t_rect):
+            targets.pop(i)
+            score += 10
+            break
+
+    # Update high score
+    if score > high_score:
+        high_score = score
+        localStorage.setItem('highscore', str(high_score))
+
+    # Update display
+    document.getElementById('score').innerHTML = 'Score: ' + str(score) + ' | High Score: ' + str(high_score)
+    draw()
+
+    # Reset if no targets or ball stopped
+    if not targets or (abs(ball_vel[0]) < 1 and abs(ball_vel[1]) < 1 and ball_pos[1] >= 600 - ball_radius - 1):
+        pygame.time.delay(2000)
+        ball_pos = [100, 500]
+        ball_vel = [0, 0]
+        if not targets:
+            targets = [[600, 400, 50, 50], [500, 300, 50, 50], [700, 200, 50, 50]]
+            score = 0
+
+pygame.quit()
+sys.exit()
+            `);
+        }
+        main();
+    </script>
+</body>
+</html>

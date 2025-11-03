@@ -41,16 +41,18 @@
     </header>
     
     <nav id="navbar" aria-label="Main navigation">
+        <button id="hamburger" aria-label="Toggle navigation menu">☰</button>
         <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#resume">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><button id="theme-toggle" aria-label="Toggle dark mode">Dark Mode</button></li>
+            <li><a href="#about"><span class="nav-icon">👤</span> About</a></li>
+            <li><a href="#experience"><span class="nav-icon">💼</span> Experience</a></li>
+            <li><a href="#education"><span class="nav-icon">🎓</span> Education</a></li>
+            <li><a href="#certifications"><span class="nav-icon">🏆</span> Certifications</a></li>
+            <li><a href="#skills"><span class="nav-icon">🛠️</span> Skills</a></li>
+            <li><a href="#projects"><span class="nav-icon">📁</span> Projects</a></li>
+            <li><a href="#resume"><span class="nav-icon">📄</span> Resume</a></li>
+            <li><a href="#contact"><span class="nav-icon">📧</span> Contact</a></li>
+            <li><a href="game.html"><span class="nav-icon">🎮</span> Physics Game</a></li>
+            <li><button id="theme-toggle" aria-label="Toggle dark mode"><span class="nav-icon">🌙</span> Dark Mode</button></li>
         </ul>
     </nav>
     
@@ -135,9 +137,12 @@
                     <p><strong>International Society of Automation (ISA)</strong> | Issued Oct 2024 | Expires Oct 2027</p>
                     <p>Advanced expertise in conducting cybersecurity risk assessments for IACS, including asset identification, threat modeling, and mitigation strategies.</p>
                     <a href="https://www.linkedin.com/posts/mark-bentz-990218169_i-am-excited-to-share-my-new-certification-activity-7360025497935773696-XXXv?utm_source=share&utm_medium=member_desktop&rcm=ACoAACgTtHwBbFDGPAJP1VOrusR1V7NX_NYY7pc" target="_blank">View Announcement on LinkedIn</a>
+                <div class="card cert-card">
+                    <h3>Rockwell CCP153 (Advanced)</h3>
+                    <p><strong>Rockwell Automation</strong> | Certificate Alabama RTP</p>
+                    <p>Advanced certification in Rockwell Automation control systems, demonstrating expertise in PLC programming and industrial automation.</p>
                 </div>
             </div>
-            <p style="margin-top: 1rem; font-style: italic; color: var(--text-light);">Additional: Rockwell CCP153 (Advanced) | Certificate Alabama RTP</p>
         </section>
         
         <section id="skills">
@@ -247,6 +252,8 @@
     <footer>
         <p>&copy; 2025 Mark James Bentz | 225 Chelsea Park Circle, Chelsea, AL 35043 | Engineered with Auburn pride.</p>
     </footer>
+    
+    <button id="back-to-top" aria-label="Back to top">↑</button>
     
     <script src="script.js"></script>
 </body>

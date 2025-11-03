@@ -1,17 +1,43 @@
+const navbar = document.getElementById('navbar');
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
+        // Close mobile nav after clicking
+        navbar.classList.remove('nav-open');
     });
 });
 
 const themeToggle = document.getElementById('theme-toggle');
-themeToggle.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+const themeIcon = themeToggle.querySelector('.nav-icon');
+themeIcon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
-    themeToggle.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+    themeIcon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+});
+
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger');
+hamburger.addEventListener('click', () => {
+    navbar.classList.toggle('nav-open');
+});
+
+// Keyboard navigation for nav
+const navLinks = document.querySelectorAll('nav a, #theme-toggle');
+navbar.addEventListener('keydown', (e) => {
+    const currentIndex = Array.from(navLinks).indexOf(document.activeElement);
+    if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % navLinks.length;
+        navLinks[nextIndex].focus();
+    } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const prevIndex = (currentIndex - 1 + navLinks.length) % navLinks.length;
+        navLinks[prevIndex].focus();
+    }
 });
 
 const form = document.querySelector('.contact-form');
@@ -168,10 +194,36 @@ function setActiveLink() {
     });
 }
 
-window.addEventListener('scroll', () => {
+// Hide/show nav on scroll
+let lastScrollY = window.scrollY;
+const backToTop = document.getElementById('back-to-top');
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+function handleScroll() {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling up
+        navbar.style.transform = 'translateY(0)';
+    }
+    lastScrollY = currentScrollY;
     setActiveLink();
     document.documentElement.style.setProperty('--scroll', window.scrollY);
-});
+
+    // Show/hide back-to-top
+    if (currentScrollY > 300) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+}
+
+window.addEventListener('scroll', handleScroll);
 
 // Staggered skills animation
 const skillsSection = document.getElementById('skills');
