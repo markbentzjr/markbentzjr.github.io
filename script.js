@@ -36,7 +36,7 @@ async function trackVisit() {
     try {
         // Check if visitor exists
         const { data: existing, error: selectError } = await supabase
-            .from('visits')
+            .from('leaderboard')
             .select('visit_count, random_name')
             .eq('visitor_id', visitorId)
             .single();
@@ -48,7 +48,7 @@ async function trackVisit() {
         if (existing) {
             // Update visit count
             const { error: updateError } = await supabase
-                .from('visits')
+                .from('leaderboard')
                 .update({ visit_count: existing.visit_count + 1 })
                 .eq('visitor_id', visitorId);
 
@@ -57,8 +57,8 @@ async function trackVisit() {
             // Insert new entry
             const randomName = generateRandomName();
             const { error: insertError } = await supabase
-                .from('visits')
-                .insert({ visitor_id: visitorId, random_name: randomName, visit_count: 1 });
+                .from('leaderboard')
+                .insert({ visitor_id: visitorId, random_name: randomName, visit_count: 1, user_agent: navigator.userAgent });
 
             if (insertError) throw insertError;
         }
@@ -73,7 +73,7 @@ trackVisit();
 async function displayLeaderboard() {
     try {
         const { data, error } = await supabase
-            .from('visits')
+            .from('leaderboard')
             .select('random_name, visit_count')
             .order('visit_count', { ascending: false })
             .limit(10);
