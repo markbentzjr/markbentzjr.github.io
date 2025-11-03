@@ -25,7 +25,7 @@
             line-height: 1.7; 
             color: var(--text-dark); 
             background: linear-gradient(135deg, var(--bg-light) 0%, #e2e8f0 100%);
-            font-size: clamp(1rem, 2vw, 1.1em);
+            font-size: clamp(0.95rem, 2vw, 1.1em);
         }
         header { 
             background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%);
@@ -54,7 +54,7 @@
         main { 
             max-width: 1200px; 
             margin: clamp(2rem, 5vw, 4rem) auto; 
-            padding: 0 1rem; 
+            padding: 0 clamp(0.5rem, 2vw, 1rem); 
             display: grid; 
             gap: clamp(2rem, 4vw, 3rem); 
         }
@@ -75,6 +75,7 @@
         section:nth-child(5) { animation-delay: 0.5s; }
         section:nth-child(6) { animation-delay: 0.6s; }
         section:nth-child(7) { animation-delay: 0.7s; }
+        section:nth-child(8) { animation-delay: 0.8s; }
         section:hover { 
             transform: translateY(-8px) scale(1.02); 
             box-shadow: var(--shadow-hover), 0 0 20px rgba(242,101,34,0.1); /* Auburn glow */
@@ -99,7 +100,7 @@
         }
         .experience-grid, .cert-grid, .projects-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: clamp(1rem, 2vw, 2rem); 
         }
         .card { 
@@ -118,7 +119,7 @@
             color: var(--primary); 
             margin-bottom: 0.75rem; 
             font-family: 'Orbitron', monospace;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
         }
         .card p { 
             margin-bottom: 0.75rem; 
@@ -153,7 +154,7 @@
         }
         .skills-category ul { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
             gap: 0.5rem; 
             list-style: none; 
         }
@@ -165,6 +166,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             text-align: left;
+            font-size: 0.95em;
         }
         .skills-category li:hover { 
             background: var(--accent); 
@@ -202,12 +204,12 @@
         img { 
             max-width: 100%; 
             height: auto; 
+            display: block;
         }
         img.auburn-logo { 
             width: clamp(60px, 10vw, 80px); 
             height: auto; 
             margin: 1rem auto; 
-            display: block; 
             border-radius: 8px; 
             box-shadow: var(--shadow);
         }
@@ -216,8 +218,15 @@
             height: clamp(120px, 20vw, 150px); 
             border-radius: 50%; 
             margin: 0 auto 1rem; 
-            display: block; 
             object-fit: cover;
+            box-shadow: var(--shadow);
+        }
+        img.resume-img { 
+            width: 100%; 
+            max-width: 800px; 
+            height: auto; 
+            margin: 1rem auto; 
+            border-radius: var(--border-radius); 
             box-shadow: var(--shadow);
         }
         .about-flex { 
@@ -250,7 +259,8 @@
                 gap: 0.75rem; 
             }
             li { margin-bottom: 0.75rem; }
-            .card ul li { padding-left: 0; margin-bottom: 0.5rem; }
+            .card ul li { padding-left: 0; margin-bottom: 0.5rem; list-style: disc inside; }
+            .projects-card ul { padding-left: 1rem; }
         }
     </style>
 </head>
@@ -264,7 +274,7 @@
         <section id="about">
             <h2>About Me</h2>
             <div class="about-flex">
-                <img src="https://media.licdn.com/dms/image/D4E03AQG5Z0ZqZqZqZq/profile-displayphoto-shrink_400_400/0/1720134567890?e=2147483647&v=beta&t=8b2f0a0f4e7b4a0a8b2f0a0f4e7b4a0a" alt="Mark James Bentz Profile" class="profile-pic"> <!-- Real LinkedIn headshot URL; upload your own if needed -->
+                <img src="Photos/profile.jpg" alt="Mark James Bentz Profile" class="profile-pic"> <!-- Upload your headshot to /Photos/profile.jpg -->
                 <p>With extensive experience in PLC programming, control panel design, and OT cybersecurity, I excel in integrating complex systems for power, water, and manufacturing. Passionate about automation and innovative engineering, from Hyundai Mobis assembly lines to EMC SCADA projects. Let's collaborate.</p>
             </div>
         </section>
@@ -406,6 +416,15 @@
                         <li>Developed MATLAB code with modified Fresnel equations and NASA MICE library ephemeris data to simulate orbit path transfers and heat absorption through CubeSat surface</li>
                     </ul>
                 </div>
+            </div>
+        </section>
+
+        <section id="resume">
+            <h2>Resume</h2>
+            <div class="card">
+                <img src="Photos/resume.jpg" alt="Mark James Bentz Resume" class="resume-img"> <!-- Your added resume image in /Photos/ -->
+                <p style="text-align: center; color: var(--text-light);">Full resume highlighting experience at Hyundai Mobis, NCR, and Auburn projects.</p>
+                <a href="Photos/resume.jpg" download style="display: block; text-align: center; margin-top: 1rem; color: var(--accent);">Download PDF Version</a>
             </div>
         </section>
         
