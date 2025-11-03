@@ -125,3 +125,69 @@ function animateProjectile(angle, velocity) {
     
     draw();
 }
+
+// Scroll-triggered animations
+const sections = document.querySelectorAll('section');
+
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, observerOptions);
+
+sections.forEach(section => {
+    sectionObserver.observe(section);
+});
+
+// Scrollspy for nav
+const navLinks = document.querySelectorAll('nav a');
+
+function setActiveLink() {
+    let current = '';
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - sectionHeight / 3) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', () => {
+    setActiveLink();
+    document.documentElement.style.setProperty('--scroll', window.scrollY);
+});
+
+// Staggered skills animation
+const skillsSection = document.getElementById('skills');
+
+const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const skillsItems = entry.target.querySelectorAll('.skills-category li');
+            skillsItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('animate-in');
+                }, index * 100);
+            });
+            skillsObserver.unobserve(entry.target); // Animate only once
+        }
+    });
+}, { threshold: 0.5 });
+
+skillsObserver.observe(skillsSection);
