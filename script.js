@@ -1,5 +1,7 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+
 const supabaseUrl = 'https://hbtgrmjjkgkaiovjaivp.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY  // Replace with your actual key
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhidGdybWpqa2drYWlvdmphaXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIxNDExOTgsImV4cCI6MjA3NzcxNzE5OH0.NFD50GZ9R2KiVOcktaQbqDTyYM2-6WtxyHozxMXANLI'  // Supabase anon key
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 // Track page visits
