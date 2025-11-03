@@ -7,31 +7,12 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-const supabaseUrl = 'https://hbtgrmjjkgkaiovjaivp.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhidGdybWpqa2drYWlvdmphaXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIxNDExOTgsImV4cCI6MjA3NzcxNzE5OH0.NFD50GZ9R2KiVOcktaQbqDTyYM2-6WtxyHozxMXANLI'  // Supabase anon key
-const supabase = createClient(supabaseUrl, supabaseKey)
-
 // Track page visits
 let visitorId = localStorage.getItem('visitor_id');
 if (!visitorId) {
     visitorId = crypto.randomUUID();
     localStorage.setItem('visitor_id', visitorId);
 }
-
-window.addEventListener('load', async () => {
-  const { error } = await supabase
-    .from('visits')
-    .insert([
-      { 
-        page: window.location.pathname, 
-        timestamp: new Date().toISOString(),
-        user_agent: navigator.userAgent,
-        visitor_id: visitorId,
-        referrer: document.referrer
-      }
-    ])
-  if (error) console.error('Error saving visit:', error)
-})
 
 const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
