@@ -15,19 +15,38 @@ themeToggle.addEventListener('click', () => {
 
 const form = document.querySelector('.contact-form');
 form.addEventListener('submit', (e) => {
+    // Clear previous errors
+    document.getElementById('name-error').textContent = '';
+    document.getElementById('email-error').textContent = '';
+    document.getElementById('message-error').textContent = '';
+
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const message = document.getElementById('message').value.trim();
-    if (!name || !email || !message) {
-        alert('Please fill in all fields.');
+
+    let isValid = true;
+
+    if (!name) {
+        document.getElementById('name-error').textContent = 'Name is required.';
+        isValid = false;
+    }
+    if (!email) {
+        document.getElementById('email-error').textContent = 'Email is required.';
+        isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById('email-error').textContent = 'Please enter a valid email address.';
+        isValid = false;
+    }
+    if (!message) {
+        document.getElementById('message-error').textContent = 'Message is required.';
+        isValid = false;
+    }
+
+    if (!isValid) {
         e.preventDefault();
         return;
     }
-    if (!/\S+@\S+\.\S+/.test(email)) {
-        alert('Please enter a valid email address.');
-        e.preventDefault();
-        return;
-    }
-    // Optional: Show a confirmation
+
+    // If valid, allow mailto, but show a message
     alert('Form submitted! Your email client will open with the message.');
 });

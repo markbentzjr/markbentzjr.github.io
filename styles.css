@@ -377,3 +377,9 @@ header {
 .contact-form button:hover {
     background: var(--primary);
 }
+.error-message {
+    color: #dc2626;
+    font-size: 0.9em;
+    margin-top: 0.25rem;
+    display: block;
+}

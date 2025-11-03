@@ -7,12 +7,31 @@
     <title>Mark James Bentz - Mechanical Engineer & Innovator</title>
     <meta property="og:title" content="Mark James Bentz - Mechanical Engineer & Innovator">
     <meta property="og:description" content="Project Engineer at Electric Machine Control | Auburn University Alum (BME '20) | Dual ISA 62443 Certified">
-    <meta property="og:image" content="Photos/Profile.jpeg">
+    <meta property="og:image" content="https://markbentzjr.github.io/assets/Profile.jpeg">
     <meta property="og:url" content="https://markbentzjr.github.io">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mark James Bentz",
+        "jobTitle": "Project Engineer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Electric Machine Control"
+        },
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Auburn University"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/mark-bentz-990218169"
+        ]
+    }
+    </script>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -39,7 +58,7 @@
         <section id="about">
             <h2>About Me</h2>
             <div class="about-flex">
-                <img src="Photos/Profile.jpeg" alt="Mark James Bentz Profile" class="profile-pic" loading="lazy">
+                <img src="assets/Profile.jpeg" alt="Mark James Bentz Profile" class="profile-pic" loading="lazy">
                 <p>With extensive experience in PLC programming, control panel design, and OT cybersecurity, I excel in integrating complex systems for power, water, and manufacturing. Passionate about automation and innovative engineering, from Hyundai Mobis assembly lines to EMC SCADA projects. Let's collaborate.</p>
             </div>
         </section>
@@ -113,7 +132,7 @@
                 </div>
                 <div class="card cert-card">
                     <h3>ISA/IEC 62443 Cybersecurity Risk Assessment Specialist (CRAS)</h3>
-                    <p><strong>International Society of Automation (ISA)</strong> | Issued Oct 2025 | Expires Oct 2028</p>
+                    <p><strong>International Society of Automation (ISA)</strong> | Issued Oct 2024 | Expires Oct 2027</p>
                     <p>Advanced expertise in conducting cybersecurity risk assessments for IACS, including asset identification, threat modeling, and mitigation strategies.</p>
                     <a href="https://www.linkedin.com/posts/mark-bentz-990218169_i-am-excited-to-share-my-new-certification-activity-7360025497935773696-XXXv?utm_source=share&utm_medium=member_desktop&rcm=ACoAACgTtHwBbFDGPAJP1VOrusR1V7NX_NYY7pc" target="_blank">View Announcement on LinkedIn</a>
                 </div>
@@ -188,9 +207,9 @@
         <section id="resume">
             <h2>Resume</h2>
             <div class="card">
-                <embed src="Photos/PDFResume.pdf" type="application/pdf" class="resume-pdf"> <!-- Rename your PDF to resume.pdf for this to work -->
-                <p style="text-align: center; color: var(--text-light);">Full resume highlighting experience at Hyundai Mobis, NCR, and Auburn projects. (If embed fails, <a href="Photos/PDFResume.pdf" target="_blank">view in new tab</a>.)</p>
-                <a href="Photos/PDFResume.pdf" download style="display: block; text-align: center; margin-top: 1rem; color: var(--accent);">Download PDF</a>
+                <embed src="assets/PDFResume.pdf" type="application/pdf" class="resume-pdf"> <!-- Rename your PDF to resume.pdf for this to work -->
+                <p style="text-align: center; color: var(--text-light);">Full resume highlighting experience at Hyundai Mobis, NCR, and Auburn projects. (If embed fails, <a href="assets/PDFResume.pdf" target="_blank">view in new tab</a>.)</p>
+                <a href="assets/PDFResume.pdf" download style="display: block; text-align: center; margin-top: 1rem; color: var(--accent);">Download PDF</a>
             </div>
         </section>
         
@@ -199,11 +218,14 @@
             <p>Ready to collaborate? Send me a message.</p>
             <form action="mailto:markbentzjr@gmail.com" method="post" enctype="text/plain" class="contact-form">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required aria-describedby="name-error">
+                <span id="name-error" class="error-message" aria-live="polite"></span>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required aria-describedby="email-error">
+                <span id="email-error" class="error-message" aria-live="polite"></span>
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
+                <textarea id="message" name="message" required aria-describedby="message-error"></textarea>
+                <span id="message-error" class="error-message" aria-live="polite"></span>
                 <button type="submit">Send Message</button>
             </form>
         </section>
