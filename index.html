@@ -34,7 +34,20 @@
     </script>
 </head>
 <body class="dark">
-    <a href="#main" class="skip-link">Skip to main content</a>
+    <nav id="navbar">
+        <button id="hamburger">☰</button>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button id="theme-toggle">Theme</button></li>
+        </ul>
+    </nav>
     <header>
         <h1>Mark James Bentz</h1>
         <p>Project Engineer | Electric Machine Control | Auburn University Alum (BME '20) | Dual ISA 62443 Certified</p>
@@ -163,7 +176,7 @@
                     <li>Ethernet TCP/IP, Modbus, DNP 3.0</li>
                     <li>Integration: Agilicus, Cisco</li>
                     <li>OS: Windows, Linux, Mac</li>
-                    <li>Databases: SAP, ToolsNet 8</li>
+                    <li>Databases: SQL Server, SAP, ToolsNet 8</li>
                     <li>OT Cybersecurity (ISA 62443)</li>
                 </ul>
             </div>
@@ -188,10 +201,10 @@
                     <a href="#experience">Related Experience →</a>
                 </div>
                 <div class="card projects-card">
-                     <h3>Python Automation Script</h3>
-                     <p><strong>Data Processing & Analysis Tool</strong> | Personal Project</p>
-                     <p>Developed a Python script using Pandas and Matplotlib to automate data cleaning, analysis, and visualization for engineering datasets. Automates CSV data import and preprocessing (handling missing values, outliers). Generates statistical summaries and interactive plots. Includes error handling and logging for robust execution.</p>
-                     <p>Example code: <code>import pandas as pd; df = pd.read_csv('data.csv'); df.dropna(); df.describe()</code></p>
+                     <h3>SQL Database Design & Implementation</h3>
+                     <p><strong>Database Management System</strong> | Personal Project</p>
+                     <p>Designed and implemented a relational database for an inventory management system using SQL Server. Created normalized tables for products, suppliers, orders, and inventory tracking. Developed stored procedures for data insertion, updates, and complex queries. Implemented database security with user roles and permissions. Built reporting views for business intelligence dashboards showing inventory levels, sales trends, and supplier performance metrics.</p>
+                     <p>Example SQL: <code>CREATE TABLE Products (ProductID INT PRIMARY KEY, ProductName VARCHAR(100), CategoryID INT, Price DECIMAL(10,2)); SELECT p.ProductName, SUM(oi.Quantity) AS TotalSold FROM Products p JOIN OrderItems oi ON p.ProductID = oi.ProductID GROUP BY p.ProductName ORDER BY TotalSold DESC;</code></p>
                 </div>
             </div>
         </section>

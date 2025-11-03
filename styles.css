@@ -26,6 +26,7 @@ header {
     position: relative; 
     overflow: hidden;
     background: none;
+    margin-left: 180px;
 }
 header::before {
     content: '';
@@ -56,10 +57,10 @@ header p {
 }
 main { 
     max-width: 1200px; 
-    margin: clamp(2rem, 5vw, 4rem) auto; 
+    margin: clamp(2rem, 5vw, 4rem) auto clamp(2rem, 5vw, 4rem) 190px; 
     padding: 0 clamp(0.5rem, 2vw, 1rem); 
     display: grid; 
-    gap: clamp(2rem, 4vw, 3rem); 
+    gap: clamp(2rem, 4vw, 3rem);
 }
 section { 
     background: var(--bg-card); 
@@ -192,8 +193,8 @@ h2::after {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     text-align: left;
     font-size: 0.95em;
-    opacity: 0;
-    transform: translateY(10px);
+    opacity: 1;
+    transform: translateY(0);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .skills-category li:hover { 
@@ -308,6 +309,7 @@ footer {
     color: white; 
     margin-top: 4rem; 
     font-weight: 300;
+    margin-left: 180px;
 }
 @keyframes slideInDown { 
     from { opacity: 0; transform: translateY(-50px); } 
@@ -327,7 +329,7 @@ footer {
     .card ul li { padding-left: 0; margin-bottom: 0.5rem; list-style: disc inside; }
     .projects-card ul { padding-left: 1rem; }
     #hamburger {
-        display: block;
+        display: none;
     }
     nav ul {
         position: absolute;
@@ -352,51 +354,56 @@ footer {
         display: block;
         width: 100%;
     }
+    main {
+        margin-left: 0;
+    }
+    header {
+        margin-left: 0;
+        padding-top: 8rem;
+    }
+    footer {
+        margin-left: 0;
+    }
 }
 nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    background: rgba(30, 58, 138, 0.95);
+    width: 180px;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(30, 58, 138, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 0.5rem 0;
+    padding: 1rem 0.5rem;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-#hamburger {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    margin-left: 1rem;
+    transition: width 0.3s ease;
+    overflow: hidden;
 }
 nav ul {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     list-style: none;
     margin: 0;
     padding: 0;
+    gap: 1rem;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 nav li {
-    margin: 0 1rem;
+    margin: 0;
 }
 nav a {
     color: white;
     text-decoration: none;
     font-weight: 600;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 8px;
     transition: all 0.3s ease;
     position: relative;
-}
-.nav-icon {
-    margin-right: 0.5rem;
-    font-size: 1.1em;
+    text-align: center;
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.8) 0%, rgba(30, 58, 138, 0.9) 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
 }
 nav a::after {
     content: '';
@@ -459,20 +466,6 @@ nav a.active {
 }
 #theme-toggle:hover {
     background: var(--accent);
-}
-
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 6px;
-    background: #000;
-    color: #fff;
-    padding: 8px;
-    text-decoration: none;
-    z-index: 100;
-}
-.skip-link:focus {
-    top: 6px;
 }
 
 .contact-form {
@@ -539,6 +532,10 @@ nav a.active {
 #theme-toggle:hover {
     background: var(--accent);
     animation: pulse 0.6s ease-in-out;
+}
+
+#hamburger {
+    display: none;
 }
 
 #back-to-top {

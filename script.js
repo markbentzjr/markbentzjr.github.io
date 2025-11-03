@@ -1,4 +1,9 @@
 const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+
+hamburger.addEventListener('click', () => {
+  navbar.classList.toggle('nav-open');
+});
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -12,17 +17,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = themeToggle.querySelector('.nav-icon');
-themeIcon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
-    themeIcon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-});
-
-// Hamburger menu toggle
-const hamburger = document.getElementById('hamburger');
-hamburger.addEventListener('click', () => {
-    navbar.classList.toggle('nav-open');
 });
 
 // Keyboard navigation for nav
@@ -128,13 +124,6 @@ backToTop.addEventListener('click', () => {
 
 function handleScroll() {
     const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
-        navbar.style.transform = 'translateY(-100%)';
-    } else {
-        // Scrolling up
-        navbar.style.transform = 'translateY(0)';
-    }
     lastScrollY = currentScrollY;
     setActiveLink();
     document.documentElement.style.setProperty('--scroll', window.scrollY);
