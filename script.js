@@ -11,8 +11,8 @@ if ('serviceWorker' in navigator) {
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 // Initialize Supabase
-const supabaseUrl = 'https://hbtgrmjjkgkaiovjaivp.supabase.co';
-const supabaseAnonKey = 'YOUR_ANON_KEY_FOR_THIS_PROJECT';
+const supabaseUrl = 'https://hbtgrmjjkgkaivjaivp.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhidGdybWpqa2drYWlvdmphaXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIxNDExOTgsImV4cCI6MjA3NzcxNzE5OH0.NFD50GZ9R2KiVOcktaQbqDTyYM2-6WtxyHozxMXANLI';
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Track page visits
