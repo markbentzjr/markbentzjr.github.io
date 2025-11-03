@@ -1,1 +1,2 @@
-# markbentzjr.github.io
+# Mark Bentz
+Auburn University Mechanical Engineer
