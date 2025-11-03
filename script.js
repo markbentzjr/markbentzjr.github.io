@@ -1,3 +1,21 @@
+const supabaseUrl = 'https://hbtgrmjjkgkaiovjaivp.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY  // Replace with your actual key
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+// Track page visits
+window.addEventListener('load', async () => {
+  const { error } = await supabase
+    .from('visits')
+    .insert([
+      { 
+        page: window.location.pathname, 
+        timestamp: new Date().toISOString(),
+        user_agent: navigator.userAgent
+      }
+    ])
+  if (error) console.error('Error saving visit:', error)
+})
+
 const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 
