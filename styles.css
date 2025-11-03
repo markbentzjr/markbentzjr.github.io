@@ -254,6 +254,16 @@ footer {
     li { margin-bottom: 0.75rem; }
     .card ul li { padding-left: 0; margin-bottom: 0.5rem; list-style: disc inside; }
     .projects-card ul { padding-left: 1rem; }
+    nav ul {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+    }
+    nav li {
+        display: inline-block;
+        margin: 0 0.75rem;
+    }
 }
 nav {
     position: fixed;
