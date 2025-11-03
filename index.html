@@ -221,13 +221,15 @@
             object-fit: cover;
             box-shadow: var(--shadow);
         }
-        img.resume-img { 
+        iframe.resume-pdf { 
             width: 100%; 
-            max-width: 800px; 
-            height: auto; 
-            margin: 1rem auto; 
+            height: 600px; 
+            border: none; 
             border-radius: var(--border-radius); 
             box-shadow: var(--shadow);
+        }
+        @media (max-width: 600px) { 
+            iframe.resume-pdf { height: 400px; }
         }
         .about-flex { 
             display: flex; 
@@ -274,7 +276,7 @@
         <section id="about">
             <h2>About Me</h2>
             <div class="about-flex">
-                <img src="Photos/profile.jpg" alt="Mark James Bentz Profile" class="profile-pic"> <!-- Upload your headshot to /Photos/profile.jpg -->
+                <img src="Photos/profile.jpg" alt="Mark James Bentz Profile" class="profile-pic"> <!-- Upload headshot as Photos/profile.jpg -->
                 <p>With extensive experience in PLC programming, control panel design, and OT cybersecurity, I excel in integrating complex systems for power, water, and manufacturing. Passionate about automation and innovative engineering, from Hyundai Mobis assembly lines to EMC SCADA projects. Let's collaborate.</p>
             </div>
         </section>
@@ -418,13 +420,13 @@
                 </div>
             </div>
         </section>
-
+        
         <section id="resume">
             <h2>Resume</h2>
             <div class="card">
-                <img src="Photos/resume.jpg" alt="Mark James Bentz Resume" class="resume-img"> <!-- Your added resume image in /Photos/ -->
+                <iframe src="Photos/PDFResume - Mark James Bentz.pdf" class="resume-pdf"></iframe>
                 <p style="text-align: center; color: var(--text-light);">Full resume highlighting experience at Hyundai Mobis, NCR, and Auburn projects.</p>
-                <a href="Photos/resume.jpg" download style="display: block; text-align: center; margin-top: 1rem; color: var(--accent);">Download PDF Version</a>
+                <a href="Photos/PDFResume - Mark James Bentz.pdf" download style="display: block; text-align: center; margin-top: 1rem; color: var(--accent);">Download PDF</a>
             </div>
         </section>
         
