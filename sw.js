@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mark-bentz-portfolio-v1';
+const CACHE_NAME = 'mark-bentz-portfolio-v2';
 const urlsToCache = [
     '/',
     '/styles.css',
