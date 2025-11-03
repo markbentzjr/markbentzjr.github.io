@@ -1,0 +1,15 @@
+/* Dark theme overrides */
+:root {
+    --primary: #ffffff; /* White text/buttons */
+    --secondary: #374151; /* Dark gray */
+    --accent: #F59E0B; /* Amber accent */
+    --bg-light: #1f2937; /* Dark background */
+    --bg-card: #374151; /* Darker cards */
+    --text-dark: #f9fafb; /* Light text */
+    --text-light: #d1d5db; /* Muted light text */
+    --shadow: 0 10px 25px rgba(0,0,0,0.3);
+    --shadow-hover: 0 20px 40px rgba(0,0,0,0.4);
+}
+body {
+    background: linear-gradient(135deg, var(--bg-light) 0%, #111827 100%);
+}

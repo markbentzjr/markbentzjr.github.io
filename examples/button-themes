@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Themes Example</title>
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/themes/dark-theme.css" rel="stylesheet" id="theme-link">
+    <style>
+        /* Additional styles for demo */
+        .demo-section { margin: 2rem 0; }
+        .button-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: all 0.3s; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-accent { background: var(--accent); color: white; }
+        .btn-secondary { background: var(--secondary); color: var(--text-dark); }
+        .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+        #theme-toggle { position: fixed; top: 1rem; right: 1rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Button Themes Example</h1>
+        <p>Demonstrating themed UI controls.</p>
+    </header>
+    <main style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+        <section class="demo-section">
+            <h2>Button Controls</h2>
+            <div class="button-grid">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-accent">Accent Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+            </div>
+        </section>
+        <section class="demo-section">
+            <h2>Form Controls</h2>
+            <input type="text" placeholder="Text input" style="padding: 0.5rem; border-radius: 4px; border: 1px solid var(--secondary);">
+            <select style="padding: 0.5rem; border-radius: 4px; border: 1px solid var(--secondary);">
+                <option>Option 1</option>
+                <option>Option 2</option>
+            </select>
+        </section>
+    </main>
+    <button id="theme-toggle" class="btn btn-accent">Toggle Theme</button>
+    <script>
+        // Simple theme switcher
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeLink = document.getElementById('theme-link');
+        let isDark = true;
+        toggleBtn.addEventListener('click', () => {
+            if (isDark) {
+                themeLink.href = '../css/main.css'; // Switch to light
+                toggleBtn.textContent = 'Dark Theme';
+            } else {
+                themeLink.href = '../css/themes/dark-theme.css'; // Switch to dark
+                toggleBtn.textContent = 'Light Theme';
+            }
+            isDark = !isDark;
+        });
+    </script>
+</body>
+</html>
