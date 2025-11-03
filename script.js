@@ -7,12 +7,94 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// Initialize Supabase
+const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
+const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY';
+const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+
 // Track page visits
 let visitorId = localStorage.getItem('visitor_id');
 if (!visitorId) {
     visitorId = crypto.randomUUID();
     localStorage.setItem('visitor_id', visitorId);
 }
+
+// Function to generate a random name
+function generateRandomName() {
+    const adjectives = ['Swift', 'Bold', 'Clever', 'Brave', 'Silent', 'Mighty', 'Wise', 'Quick', 'Fierce', 'Gentle'];
+    const nouns = ['Eagle', 'Wolf', 'Tiger', 'Bear', 'Hawk', 'Lion', 'Fox', 'Owl', 'Shark', 'Panther'];
+    const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const noun = nouns[Math.floor(Math.random() * nouns.length)];
+    return `${adj} ${noun}`;
+}
+
+// Track visit in Supabase
+async function trackVisit() {
+    try {
+        // Check if visitor exists
+        const { data: existing, error: selectError } = await supabase
+            .from('leaderboard')
+            .select('visit_count, random_name')
+            .eq('visitor_id', visitorId)
+            .single();
+
+        if (selectError && selectError.code !== 'PGRST116') { // PGRST116 is no rows
+            throw selectError;
+        }
+
+        if (existing) {
+            // Update visit count
+            const { error: updateError } = await supabase
+                .from('leaderboard')
+                .update({ visit_count: existing.visit_count + 1 })
+                .eq('visitor_id', visitorId);
+
+            if (updateError) throw updateError;
+        } else {
+            // Insert new entry
+            const randomName = generateRandomName();
+            const { error: insertError } = await supabase
+                .from('leaderboard')
+                .insert({ visitor_id: visitorId, random_name: randomName, visit_count: 1 });
+
+            if (insertError) throw insertError;
+        }
+    } catch (error) {
+        console.error('Error tracking visit:', error);
+    }
+}
+
+trackVisit();
+
+// Display leaderboard
+async function displayLeaderboard() {
+    try {
+        const { data, error } = await supabase
+            .from('leaderboard')
+            .select('random_name, visit_count')
+            .order('visit_count', { ascending: false })
+            .limit(10);
+
+        if (error) throw error;
+
+        const leaderboardContent = document.getElementById('leaderboard-content');
+        if (data && data.length > 0) {
+            let html = '<ol>';
+            data.forEach((entry, index) => {
+                html += `<li><strong>${entry.random_name}</strong> - ${entry.visit_count} visits</li>`;
+            });
+            html += '</ol>';
+            leaderboardContent.innerHTML = html;
+        } else {
+            leaderboardContent.innerHTML = '<p>No visitors yet.</p>';
+        }
+    } catch (error) {
+        console.error('Error fetching leaderboard:', error);
+        document.getElementById('leaderboard-content').innerHTML = '<p>Unable to load leaderboard.</p>';
+    }
+}
+
+displayLeaderboard();
 
 const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');

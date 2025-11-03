@@ -14,6 +14,7 @@
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -93,6 +94,7 @@
             <li><a href="#skills" aria-describedby="skills-desc">Skills</a></li>
             <li><a href="#projects" aria-describedby="projects-desc">Projects</a></li>
             <li><a href="#resume" aria-describedby="resume-desc">Resume</a></li>
+            <li><a href="#leaderboard" aria-describedby="leaderboard-desc">Leaderboard</a></li>
             <li><a href="#contact" aria-describedby="contact-desc">Contact</a></li>
             <li><button id="theme-toggle" aria-label="Toggle between light and dark theme">Theme</button></li>
         </ul>
@@ -106,6 +108,7 @@
         <div id="skills-desc" class="visually-hidden">Technical skills and competencies</div>
         <div id="projects-desc" class="visually-hidden">Notable projects and achievements</div>
         <div id="resume-desc" class="visually-hidden">Downloadable resume document</div>
+        <div id="leaderboard-desc" class="visually-hidden">Top visitors leaderboard</div>
         <div id="contact-desc" class="visually-hidden">Contact form for inquiries</div>
     </header>
     
@@ -265,6 +268,13 @@
                 <embed src="assets/PDFResume.pdf" type="application/pdf" class="resume-pdf">
                 <p>Full resume highlighting experience at Hyundai Mobis, NCR, and Auburn projects. (If embed fails, <a href="assets/PDFResume.pdf" target="_blank">view in new tab</a>.)</p>
                 <a href="assets/PDFResume.pdf" download>Download PDF</a>
+            </div>
+        </section>
+        
+        <section id="leaderboard" aria-labelledby="leaderboard-heading">
+            <h2 id="leaderboard-heading">Visitor Leaderboard</h2>
+            <div id="leaderboard-content">
+                <p>Loading leaderboard...</p>
             </div>
         </section>
         
