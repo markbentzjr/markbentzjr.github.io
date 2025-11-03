@@ -11,4 +11,5 @@ jobs:
           urls: https://markbentzjr.github.io/
           configPath: .lighthouserc.json
           uploadArtifacts: true
+          artifactName: lighthouseresults
           temporaryPublicStorage: true

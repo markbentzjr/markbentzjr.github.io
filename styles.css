@@ -345,6 +345,9 @@ footer {
     #hamburger {
         display: none;
     }
+    nav {
+        display: none;
+    }
     nav ul {
         position: absolute;
         top: 100%;
