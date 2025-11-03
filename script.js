@@ -8,6 +8,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 const themeToggle = document.getElementById('theme-toggle');
+themeToggle.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
     themeToggle.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
