@@ -5,6 +5,12 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 // Track page visits
+let visitorId = localStorage.getItem('visitor_id');
+if (!visitorId) {
+    visitorId = crypto.randomUUID();
+    localStorage.setItem('visitor_id', visitorId);
+}
+
 window.addEventListener('load', async () => {
   const { error } = await supabase
     .from('visits')
@@ -12,7 +18,9 @@ window.addEventListener('load', async () => {
       { 
         page: window.location.pathname, 
         timestamp: new Date().toISOString(),
-        user_agent: navigator.userAgent
+        user_agent: navigator.userAgent,
+        visitor_id: visitorId,
+        referrer: document.referrer
       }
     ])
   if (error) console.error('Error saving visit:', error)
@@ -90,8 +98,10 @@ form.addEventListener('submit', (e) => {
         return;
     }
 
-    // If valid, allow mailto, but show a message
-    alert('Form submitted! Your email client will open with the message.');
+    // If valid, allow form submission to Formspree
+    // No alert needed, Formspree will handle the submission
+});
+
 // Scroll-triggered animations
 const sections = document.querySelectorAll('section');
 
@@ -113,7 +123,7 @@ sections.forEach(section => {
 });
 
 // Scrollspy for nav
-const navLinks = document.querySelectorAll('nav a');
+const scrollNavLinks = document.querySelectorAll('nav a');
 
 function setActiveLink() {
     let current = '';
@@ -126,7 +136,7 @@ function setActiveLink() {
         }
     });
 
-    navLinks.forEach(link => {
+    scrollNavLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');

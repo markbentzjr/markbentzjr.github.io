@@ -221,15 +221,15 @@
         <section id="contact">
             <h2>Contact</h2>
             <p>Ready to collaborate? Send me a message.</p>
-            <form action="mailto:markbentzjr@gmail.com" method="post" enctype="text/plain" class="contact-form">
+            <form action="https://formspree.io/f/mjkpdgkq" method="POST" class="contact-form">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required aria-describedby="name-error">
+                <input type="text" id="name" name="name" required aria-describedby="name-error" autocomplete="name">
                 <span id="name-error" class="error-message" aria-live="polite"></span>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required aria-describedby="email-error">
+                <input type="email" id="email" name="email" required aria-describedby="email-error" autocomplete="email">
                 <span id="email-error" class="error-message" aria-live="polite"></span>
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" required aria-describedby="message-error"></textarea>
+                <textarea id="message" name="message" required aria-describedby="message-error" autocomplete="off"></textarea>
                 <span id="message-error" class="error-message" aria-live="polite"></span>
                 <button type="submit">Send Message</button>
             </form>
