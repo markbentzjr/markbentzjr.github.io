@@ -3,66 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Bentz - Mechanical Engineer</title>
+    <meta name="description" content="Mark Bentz - Mechanical Engineer at Electric Machine Control Inc. | Auburn University Alum | Automation Enthusiast">
+    <title>Mark Bentz - Mechanical Engineer & Innovator</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; background-color: #f4f4f4; }
-        header { background: #007bff; color: white; text-align: center; padding: 2rem; }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { margin: 0; font-size: 1.2rem; opacity: 0.9; }
-        main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-        section { background: white; margin-bottom: 2rem; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h2 { color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 0.5rem; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin-bottom: 1rem; }
-        a { color: #007bff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        footer { text-align: center; padding: 1rem; background: #333; color: white; }
-        @media (max-width: 600px) { header h1 { font-size: 2rem; } main { padding: 0 0.5rem; } }
+        :root { --primary: #007bff; --secondary: #0056b3; --accent: #f8f9fa; --text: #333; --bg: #fff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); background: linear-gradient(135deg, var(--accent) 0%, #e9ecef 100%); }
+        header { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); opacity: 0.3; }
+        header h1 { font-size: 3rem; margin: 0; animation: fadeInUp 1s ease-out; position: relative; z-index: 1; }
+        header p { font-size: 1.3rem; margin: 0.5rem 0 0; opacity: 0.95; animation: fadeInUp 1s ease-out 0.2s both; position: relative; z-index: 1; }
+        main { max-width: 1000px; margin: 3rem auto; padding: 0 2rem; display: grid; gap: 2rem; }
+        section { background: var(--bg); padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; animation: fadeIn 1s ease-out; }
+        section:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+        h2 { color: var(--primary); font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary); padding-left: 1rem; }
+        .experience-grid, .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .card { background: var(--accent); padding: 1.5rem; border-radius: 8px; transition: all 0.3s ease; }
+        .card:hover { background: white; transform: scale(1.02); }
+        .card h3 { color: var(--primary); margin-bottom: 0.5rem; }
+        .card p { margin-bottom: 0.5rem; opacity: 0.8; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
+        li::before { content: '→'; color: var(--primary); position: absolute; left: 0; }
+        a { color: var(--primary); text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
+        a:hover { color: var(--secondary); }
+        footer { text-align: center; padding: 2rem; background: var(--text); color: white; margin-top: 3rem; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width: 768px) { header h1 { font-size: 2.2rem; } main { padding: 0 1rem; } section { padding: 1.5rem; } }
     </style>
 </head>
 <body>
     <header>
         <h1>Mark Bentz</h1>
-        <p>Auburn University Mechanical Engineer</p>
+        <p>Mechanical Engineer | Electric Machine Control Inc. | Auburn University Alum</p>
     </header>
     
     <main>
         <section id="about">
             <h2>About Me</h2>
-            <p>I'm a Mechanical Engineer from Auburn University, passionate about [add your interests, e.g., automation, design, or coding]. Currently exploring projects in [e.g., Home Assistant integrations, Grocy setups—based on our chats]. Let's connect!</p>
-            <!-- Add a photo: <img src="your-photo.jpg" alt="Mark Bentz" style="width:100%; max-width:200px; border-radius:50%;"> -->
+            <p>As a Mechanical Engineer with a passion for automation and innovative design, I thrive on turning complex challenges into efficient solutions. From Home Assistant integrations to custom engineering projects, I'm always exploring the intersection of technology and real-world impact. Let's build something remarkable together!</p>
+            <!-- Add photo: <img src="your-photo.jpg" alt="Mark Bentz" style="width: 150px; height: 150px; border-radius: 50%; float: right; margin-left: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"> -->
+        </section>
+        
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <div class="card">
+                    <h3>Mechanical Engineer</h3>
+                    <p><strong>Electric Machine Control Inc.</strong> | Present</p>
+                    <p>Designing and optimizing electric machine controls for industrial applications, focusing on efficiency and reliability.</p>
+                </div>
+                <!-- Add more: e.g., Internships or previous roles -->
+                <div class="card">
+                    <h3>Engineering Intern</h3>
+                    <p><strong>Auburn University Labs</strong> | 2022-2023</p>
+                    <p>Collaborated on prototyping and testing mechanical systems, gaining hands-on experience in CAD and simulation tools.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Education</h2>
+            <div class="card">
+                <h3>Bachelor of Science in Mechanical Engineering</h3>
+                <p><strong>Auburn University</strong> | 2019-2023</p>
+                <p>Focused on thermodynamics, materials science, and automation. Graduated with honors, emphasizing practical engineering projects.</p>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul class="skills-grid">
+                <li>SolidWorks & CAD Design</li>
+                <li>Python & Automation Scripting</li>
+                <li>Home Assistant Integrations</li>
+                <li>Thermodynamics & Heat Transfer</li>
+                <li>Project Management</li>
+                <li>MATLAB/Simulink</li>
+                <!-- Add more based on your expertise -->
+            </ul>
         </section>
         
         <section id="projects">
             <h2>Projects</h2>
             <ul>
                 <li>
-                    <strong>Repo 1</strong><br>
-                    Brief description. Built with [language].<br>
-                    <a href="https://github.com/markbentzjr/repo1" target="_blank">View on GitHub</a>
+                    <strong>Smart Home Automation Dashboard</strong><br>
+                    Custom Home Assistant setup with real-time monitoring and voice controls. Built for energy efficiency.<br>
+                    <a href="https://github.com/markbentzjr/home-assistant-dashboard" target="_blank">View on GitHub</a>
                 </li>
                 <li>
-                    <strong>Repo 2</strong><br>
-                    Another project idea—e.g., a custom Home Assistant dashboard.<br>
-                    <a href="https://github.com/markbentzjr/repo2" target="_blank">View on GitHub</a>
+                    <strong>Electric Machine Simulator</strong><br>
+                    Python-based tool for modeling control systems, inspired by work at Electric Machine Control Inc.<br>
+                    <a href="https://github.com/markbentzjr/machine-simulator" target="_blank">View on GitHub</a>
                 </li>
-                <!-- Add more as needed -->
+                <!-- Expand with real repos -->
             </ul>
         </section>
         
         <section id="contact">
             <h2>Contact</h2>
-            <p>Reach out via GitHub or email.</p>
+            <p>Ready to collaborate? Get in touch.</p>
             <ul>
-                <li><a href="https://github.com/markbentzjr/markbentz" target="_blank">GitHub Profile</a></li>
-                <li>Email: [your-email@example.com]</li>
-                <li>[LinkedIn/Twitter: add links]</li>
+                <li><a href="https://www.linkedin.com/in/mark-bentz-990218169/" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/markbentzjr" target="_blank">GitHub</a></li>
+                <li>Email: markbentzjr@gmail.com</li>
+                <li>Phone: (251) 463-8530</li>
+                <!-- Add phone, Twitter/X if desired -->
             </ul>
         </section>
     </main>
     
     <footer>
-        <p>&copy; 2025 Mark Bentz. Built with HTML & CSS.</p>
+        <p>&copy; 2025 Mark Bentz. Engineered with passion.</p>
     </footer>
 </body>
 </html>
